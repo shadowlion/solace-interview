@@ -32,7 +32,7 @@ export default function AdvocatesContextProvider({ children }: { children: React
       } catch (error) {
         setError(error instanceof Error ? error : new Error(`Unknown error: ${error}`));
       } finally {
-        // toggleLoading(false);
+        toggleLoading(false);
       }
     }
 
