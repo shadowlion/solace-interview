@@ -54,6 +54,7 @@ export interface AdvocatesContextType {
   searchTerm: string;
   advocates: DataState["advocates"];
   filteredAdvocates: DataState["filteredAdvocates"];
+  error: Error | null;
   dispatch: Dispatch<Action>;
 }
 
