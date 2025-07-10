@@ -14,7 +14,7 @@ export default function AdvocatesContextProvider({ children }: { children: React
         toggleLoading(true);
         const res = await fetch("/api/advocates");
         if (!res.ok) throw Error("Unable to fetch advocates");
-        const data = await res.json();
+        const { data } = await res.json();
         dispatch({
           type: actionTypes.SET_FIELD,
           payload: {
@@ -32,7 +32,7 @@ export default function AdvocatesContextProvider({ children }: { children: React
       } catch (error) {
         setError(error instanceof Error ? error : new Error(`Unknown error: ${error}`));
       } finally {
-        toggleLoading(false);
+        // toggleLoading(false);
       }
     }
 
