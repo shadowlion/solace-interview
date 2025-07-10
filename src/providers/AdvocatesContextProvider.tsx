@@ -12,7 +12,7 @@ export default function AdvocatesContextProvider({ children }: { children: React
     async function fetchData() {
       try {
         toggleLoading(true);
-        const res = await fetch("/api/advocates");
+        const res = await fetch("/api/advocates?index=0&limit=3");
         if (!res.ok) throw Error("Unable to fetch advocates");
         const { data } = await res.json();
         dispatch({
