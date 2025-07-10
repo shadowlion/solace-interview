@@ -1,4 +1,4 @@
-import Search from "@/components/Search";
+import { Search, Table } from "@/components";
 import AdvocatesContextProvider from "@/providers/AdvocatesContextProvider";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
           <Search />
           <br />
           <br />
-          {/* <Table /> */}
+          <Table />
         </section>
       </AdvocatesContextProvider>
     </main>
