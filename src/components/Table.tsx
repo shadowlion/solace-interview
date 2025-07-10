@@ -24,15 +24,32 @@ export default function Table() {
 }
 
 function TableBody() {
-  const { loading, filteredAdvocates } = useAdvocates();
-  return (
-    <tbody className="divide-y divide-gray-200 bg-white">
-      {loading ? (
-      <tr className="hover:bg-gray-50 text-center">
-        <td colSpan={7} className="p-20">Loading...</td>
-      </tr>
-      ) : (
-        filteredAdvocates.map((advocate, index) => (
+  const { loading, error, filteredAdvocates } = useAdvocates();
+
+  if (loading) {
+    return (
+      <tbody className="divide-y divide-gray-200 bg-white">
+        <tr className="hover:bg-gray-50 text-center">
+          <td colSpan={7} className="p-20">Loading...</td>
+        </tr>
+      </tbody>
+    );
+  }
+
+  if (error) {
+    return (
+      <tbody className="divide-y divide-gray-200 bg-white">
+        <tr className="hover:bg-gray-50 text-center">
+          <td colSpan={7} className="p-20">Oh No! Something went wrong.</td>
+        </tr>
+      </tbody>
+    );
+  }
+
+  if (filteredAdvocates.length > 0) {
+    return (
+      <tbody className="divide-y divide-gray-200 bg-white">
+        {filteredAdvocates.map((advocate, index) => (
           <tr key={index} className="hover:bg-gray-50">
             <td className="px-4 py-2 text-sm text-gray-800">{advocate.firstName}</td>
             <td className="px-4 py-2 text-sm text-gray-800">{advocate.lastName}</td>
@@ -46,8 +63,16 @@ function TableBody() {
             <td className="px-4 py-2 text-sm text-gray-800">{advocate.yearsOfExperience}</td>
             <td className="px-4 py-2 text-sm text-gray-800">{advocate.phoneNumber}</td>
           </tr>
-        ))
-      )}
+        ))}
+      </tbody>
+    );
+  }
+
+  return (
+    <tbody className="divide-y divide-gray-200 bg-white">
+      <tr className="hover:bg-gray-50 text-center">
+        <td colSpan={7} className="p-20">Empty.</td>
+      </tr>
     </tbody>
-  );
+  )
 }
