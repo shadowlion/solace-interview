@@ -56,29 +56,3 @@ export default function Search() {
     </div>
   )
 }
-
-// Prior Logic
-// const onChange = (e) => {
-//   const searchTerm = e.target.value;
-
-//   document.getElementById("search-term").innerHTML = searchTerm;
-
-//   console.log("filtering advocates...");
-//   const filteredAdvocates = advocates.filter((advocate) => {
-//     return (
-//       advocate.firstName.includes(searchTerm) ||
-//       advocate.lastName.includes(searchTerm) ||
-//       advocate.city.includes(searchTerm) ||
-//       advocate.degree.includes(searchTerm) ||
-//       advocate.specialties.includes(searchTerm) ||
-//       advocate.yearsOfExperience.includes(searchTerm)
-//     );
-//   });
-
-//   setFilteredAdvocates(filteredAdvocates);
-// };
-
-// const onClick = () => {
-//   console.log(advocates);
-//   setFilteredAdvocates(advocates);
-// };

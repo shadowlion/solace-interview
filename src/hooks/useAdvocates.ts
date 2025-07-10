@@ -1,4 +1,5 @@
 import { Advocate } from "@/types";
+import { filterBySearchTerm } from "@/utils/filter";
 import { createContext, Dispatch, useContext } from "react";
 
 export interface DataState {
@@ -28,6 +29,16 @@ export type Action = {
 export function stateReducer(state: DataState, action: Action): DataState {
   switch (action.type) {
     case actionTypes.SET_FIELD:
+      if (action.payload.field === "searchTerm") {
+        const searchTerm = action.payload.value as string;
+        const newlyFiltered = filterBySearchTerm(state.advocates, searchTerm);
+        return {
+          ...state,
+          filteredAdvocates: newlyFiltered,
+          searchTerm,
+        }
+      }
+
       return {
         ...state,
         [action.payload.field]: action.payload.value,
