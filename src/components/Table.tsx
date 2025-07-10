@@ -28,8 +28,8 @@ function TableBody() {
   return (
     <tbody className="divide-y divide-gray-200 bg-white">
       {loading ? (
-      <tr className="hover:bg-gray-50">
-        <td>Loading...</td>
+      <tr className="hover:bg-gray-50 text-center">
+        <td colSpan={7} className="p-20">Loading...</td>
       </tr>
       ) : (
         filteredAdvocates.map((advocate, index) => (
